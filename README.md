@@ -1,10 +1,10 @@
 ---
-title: {{title}}
-emoji: {{emoji}}
-colorFrom: {{colorFrom}}
-colorTo: {{colorTo}}
-sdk: {{sdk}}
-sdk_version: {{sdkVersion}}
+title: TravelMaster
+emoji: 🚀
+colorFrom: red
+colorTo: yellow
+sdk: gradio
+sdk_version: string
 app_file: app.py
 pinned: false
 ---

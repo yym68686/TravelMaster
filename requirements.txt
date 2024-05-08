@@ -1,0 +1,2 @@
+gradio==4.29.0
+ModelMerge==0.2.1

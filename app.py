@@ -14,7 +14,7 @@ chatgptbot = chatgpt(api_key=f"{API}", engine=GPT_ENGINE, system_prompt=systempr
 
 with gr.Blocks(fill_height=True) as demo:
     with gr.Column():
-        chatbot = gr.Chatbot(show_label=False, elem_id="chatbox", scale=2)  # 设置聊天框高度
+        chatbot = gr.Chatbot(show_label=False, elem_id="chatbox", scale=10, height=900)  # 设置聊天框高度
         with gr.Row():
             msg = gr.Textbox(placeholder="输入你的问题...", elem_id="inputbox", scale=10)
             clear = gr.Button("清除", elem_id="clearbutton")
@@ -28,9 +28,14 @@ with gr.Blocks(fill_height=True) as demo:
         print(history)
         user_message = history[-1][0]
         history[-1][1] = ""
+        answer = ""
         for text in chatgptbot.ask_stream(user_message):
             print(text, end="")
-            history[-1][1] += text
+            if "🌐" in text:
+                history[-1][1] = text
+            else:
+                answer += text
+                history[-1][1] = answer
             yield history
 
     # 提交用户消息和处理回答
